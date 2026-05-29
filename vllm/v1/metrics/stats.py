@@ -182,6 +182,10 @@ class SchedulerStats:
 
     kv_cache_usage: float = 0.0
 
+    kv_cache_num_total_blocks: int = 0  # total blocks in the KV cache pool
+    kv_cache_num_free_blocks: int = 0   # blocks currently available
+    kv_cache_num_active_blocks: int = 0 # blocks currently in use
+
     prefix_cache_stats: PrefixCacheStats = field(default_factory=PrefixCacheStats)
     connector_prefix_cache_stats: PrefixCacheStats | None = None
 

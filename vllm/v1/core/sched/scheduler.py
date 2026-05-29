@@ -1891,6 +1891,12 @@ class Scheduler(SchedulerInterface):
             num_waiting_reqs=len(self.waiting),
             num_skipped_waiting_reqs=len(self.skipped_waiting),
             kv_cache_usage=self.kv_cache_manager.usage,
+            kv_cache_num_total_blocks=self.kv_cache_manager.block_pool.get_num_total_blocks(),
+            kv_cache_num_free_blocks=self.kv_cache_manager.block_pool.get_num_free_blocks(),
+            kv_cache_num_active_blocks=(
+                self.kv_cache_manager.block_pool.get_num_total_blocks()
+                - self.kv_cache_manager.block_pool.get_num_free_blocks()
+            ),
             prefix_cache_stats=prefix_cache_stats,
             connector_prefix_cache_stats=connector_prefix_cache_stats,
             kv_cache_eviction_events=eviction_events,
